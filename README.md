@@ -26,30 +26,26 @@ offerup.getFullListByQuery({
 
         /*
         Output
-            "status": {
-                "status": "ok",
-                "message": "success",
-                "code": "200",
-                "server_time": "2017-12-10T04:54:43Z"
-            },
-            "data": {
-                "feed_items": [
-                    {
-                        "type": "item",
-                        "item": {
-                            "post_date": "2017-12-10T04:49:07.464Z",
-                            "owner": {
-                                    ...
-                                },
-                            "id": 391663263,
-                            "title": "Iphone 6S",
-                            "post_date_ago": "13 minutes",
-                            "location_name": "Joliet, IL"
-                        }
-                    }
-                ],
-
-            }
+            [
+                {
+                    id: 469543577,
+                    category: { 
+                        id: 20, 
+                        name: 'Cell Phones' 
+                    },
+                    location_name: 'Chicago, IL',
+                    title: 'Cracked iPhone 7 32 GB unlocked for any company',
+                    post_date_ago: '1 minute',
+                    get_full_url: 'https://offerup.com/item/detail/469543577/',
+                    priority: 100,
+                    state: 3,
+                    longitude: -87.7754,
+                    latitude: 41.9211,
+                    sort_label: 'Items near Chicago',
+                    description: 'Unlocked for any company. Cracked screen everything works perfectly. Drop off is a extra $15 '
+                },
+                ...
+            ]
         */
 
     }, function error(response){
