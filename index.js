@@ -9,9 +9,6 @@ const request = require('request');
 const NodeGeocoder = require('node-geocoder');
 const cheerio = require('cheerio');
 
-
-
-
 /**
    * Gets latitude and longitude by location name
    *
@@ -22,9 +19,6 @@ const cheerio = require('cheerio');
 function _getLocation(location){
     return new Promise(function(resolve, reject){
 
-        if(!OfferUp.googleApi){
-            reject(new Error('\'Google Map Api Key\' is not defined. Please use method setGoogleMapApi to defined it'));
-        }
         if(!location){
             reject(new Error('\'location\' parameter is required'));
         }
@@ -34,12 +28,7 @@ function _getLocation(location){
 
 
         var options = {
-            provider: 'google',
-            
-            // Optional depending on the providers
-            httpAdapter: 'https',
-            apiKey: OfferUp.googleApi,
-            formatter: null
+            provider: 'openstreetmap',
         };
 
         var geocoder = NodeGeocoder(options);
@@ -368,17 +357,11 @@ function getFullListByQuery(query, location, resolve, reject){
      * @param  {String}  apikey Your Api Key
      * 
     */
+   /**
+    * No needed anymore
+    */
     OfferUp.setGoogleMapApi = function(apikey){
-        if(this.googleApi){
-            reject(new Error('You already have an API KEY'));
-        }
-        if(!apikey){
-            reject(new Error('\'API Key\' is not defined'));
-        }
-        if(!(typeof apikey == 'string')){
-            reject(new Error('\'API Key\' should be \'string\''));
-        }
-        this.googleApi = apikey;
+       throw Error('This function has been canceled since v.1.1.0. There is no needed to use it anymore.');
     }
 
      /**

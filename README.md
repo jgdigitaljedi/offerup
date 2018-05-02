@@ -14,9 +14,6 @@ npm install offerup
 ```js
 var offerup = require('offerup');
 
-// Set your Google Map Api
-offerup.setGoogleMapApi('Your_Api_Key');
-
 // Get your list by Query
 offerup.getFullListByQuery({
     location: 'Chicago', // required
@@ -64,12 +61,11 @@ offerup.getFullListByQuery({
 
 ## Methods
 
-### setGoogleMapApi('api_key')
-
->https://developers.google.com/maps/
+### setGoogleMapApi('api_key') 
+> Canceled since v.1.1.0
 
 ```js
-offerup.setGoogleMapApi('Your_Api_Key');
+// offerup.setGoogleMapApi('Your_Api_Key');
 ```
 
 ### setDefaults()
