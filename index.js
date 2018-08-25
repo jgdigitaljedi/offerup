@@ -319,7 +319,7 @@ function getFullListByQuery(query, location, resolve, reject){
                 /*
                     Creates another request if id is less than query.limit
                 */
-                if(k < query.limit){
+                if(k < query.limit && r.data.next_page_cursor){
                     var s = JSON.parse(r.data.next_page_cursor);
                     query.search_after = s.search_after;
                     query.cursor_id = s.cursor_id;
