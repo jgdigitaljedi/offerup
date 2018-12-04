@@ -4,7 +4,9 @@ The unofficial OfferUp API client 2.0
 
 OfferUp 1.0 has become depracated due to changing API endpoints on OfferUp side and installing CloudFlare Firewall.
 
-OfferUp 2.0 allows you to use more methods, such as: [authorize()](docs/authorize.md), [getMyProfile()](docs/getMyProfile.md), [getUserRelation()](docs/getUserRelation.md), [offerPrice()](docs/offerPrice.md). **Your move, OfferUp.**
+OfferUp 2.0 allows you to use more methods, such as: [authorize()](docs/authorize.md), [getMyProfile()](docs/getMyProfile.md), [getUserRelation()](docs/getUserRelation.md), [offerPrice()](docs/offerPrice.md).
+
+**Your move, OfferUp.**
 
 > Note: OfferUp doesn't provide an API. So this lib should only be used for personal fun.
 
