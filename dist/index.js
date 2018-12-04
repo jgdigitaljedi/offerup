@@ -84,12 +84,19 @@ var OfferUp = /** @class */ (function () {
                     fs.writeFileSync(_this.offerupConfigPath, data.session.token + ":" + username, {
                         encoding: 'utf8'
                     });
+                    _this.token = data.session.token;
                 }
                 resolve(data);
             }).catch(function (err) {
                 reject(err);
             });
         });
+    };
+    /**
+     * Search function
+     */
+    OfferUp.prototype.search = function (options) {
+        return this.baseRequest("https://api.offerupnow.com/api/search/v4/feed/?" + form_urlencoded_1.default(options));
     };
     /**
      * Gets user by id

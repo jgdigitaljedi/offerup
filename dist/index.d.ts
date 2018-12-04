@@ -18,6 +18,10 @@ export default class OfferUp {
     offerPrice(itemid: number, price: number): Promise<OfferUpItemOffer>;
     authorize(username: string, password: string, options?: any): Promise<OfferUpUserResult>;
     /**
+     * Search function
+     */
+    search(options: OfferUpSearchOptions): Promise<OfferUpSearchResult>;
+    /**
      * Gets user by id
      * @param userid
      */
@@ -38,6 +42,19 @@ export default class OfferUp {
     private postRequest(url, data);
     private basePostRequst(url, body);
     private baseRequest(url, requestOptions?);
+}
+export interface OfferUpSearchOptions {
+    q: string;
+    lid: number;
+    zipcode: number;
+    lon: string;
+    lat: string;
+    limit: number;
+    accuracy: number;
+    sort: 'distance' | 'price' | '-price';
+    price_min: number;
+    price_max: number;
+    delivery_param: 'p' | 's';
 }
 export interface OfferUpRequestOptions {
     returnBody?: boolean;
@@ -359,4 +376,40 @@ export interface OfferUpItemOffer {
         request_status: number;
         require_payments: boolean;
     };
+}
+export interface OfferUpSearchResult {
+    search_data: {
+        search_performed_event_unique_id: string;
+        search_session_id: string;
+    };
+    feed_items: [{
+        type: string;
+        item: OfferUpItem;
+        tile_id: string;
+    }];
+    feed_options: [{
+        position: string;
+        type: string;
+        name: string;
+        label: string;
+        label_short: string;
+        query_param: string;
+        options: [{
+            label: string;
+            label_short: string;
+            value: string;
+        }];
+    }];
+    next_page_cursor: string;
+    search_alert: {
+        alert_status: string;
+    };
+    query: string;
+    feed_title: string;
+    shipping_filter: {
+        shipping_only_filter_enabled: boolean;
+        shipping_only_filter_applied: boolean;
+        intersperse_filter_applied: boolean;
+    };
+    operation_context: string;
 }

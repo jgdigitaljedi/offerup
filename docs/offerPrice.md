@@ -1,4 +1,4 @@
-# offerPrice
+# offerPrice()
 
 **Fields**:
 - <mark>itemid: number = 591216884</mark> - Item ID

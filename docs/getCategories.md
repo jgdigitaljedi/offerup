@@ -1,4 +1,4 @@
-# getCategories
+# getCategories()
 
 **Fields**: <mark>No</mark>
 

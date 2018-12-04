@@ -1,4 +1,4 @@
-# getMyProfile
+# getMyProfile()
 
 **Fields**: <mark>No</mark>
 

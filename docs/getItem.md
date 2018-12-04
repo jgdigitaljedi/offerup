@@ -1,4 +1,4 @@
-# getItem
+# getItem()
 
 **Fields**:
 - <mark>itemid: number = 589211682</mark> - Item ID

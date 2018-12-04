@@ -1,4 +1,4 @@
-# getAccountPaymentHistory
+# getAccountPaymentHistory()
 
 > If you have an example of how <mark>history</mark> property looks like, feel free to share.
 

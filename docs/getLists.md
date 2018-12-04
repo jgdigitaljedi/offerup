@@ -1,4 +1,4 @@
-# getLists
+# getLists()
 
 **Fields**: <mark>No</mark>
 

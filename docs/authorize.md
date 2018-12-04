@@ -1,4 +1,4 @@
-# offerPrice
+# offerPrice()
 
 **Fields**:
 - <mark>email: string = aga36595@iencm.com</mark> - Your email

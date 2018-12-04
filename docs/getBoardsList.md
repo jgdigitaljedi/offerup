@@ -1,4 +1,4 @@
-# getBoardsList
+# getBoardsList()
 
 **Fields**: <mark>No</mark>
 

@@ -1,4 +1,4 @@
-# getUser
+# getUser()
 
 **Fields**:
 - <mark>userid: number = 49580761</mark> - User ID

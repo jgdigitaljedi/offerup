@@ -1,4 +1,4 @@
-# getAccountPayment
+# getAccountPayment()
 
 **Fields**: <mark>No</mark>
 

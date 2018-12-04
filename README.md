@@ -1,149 +1,242 @@
-# offerup
+# OfferUp 2.0
 
-The unofficial OfferUp API client.
+The unofficial OfferUp API client 2.0
+
+OfferUp 1.0 has become depracated due to changing API endpoints on OfferUp side and installing CloudFlare Firewall.
+
+OfferUp 2.0 allows you to use more methods, such as: [authorize()](docs/authorize.md), [getMyProfile()](docs/getMyProfile.md), [getUserRelation()](docs/getUserRelation.md), [offerPrice()](docs/offerPrice.md). **Your move, OfferUp.**
 
 > Note: OfferUp doesn't provide an API. So this lib should only be used for personal fun.
 
 ## Install
 
 ```bash
-npm install offerup
+npm install offerup --save
 ```
 ## Usage
 
-```js
-var offerup = require('offerup');
+- [Request and response examples are here](docs/search.md)
 
-// Get your list by Query
-offerup.getFullListByQuery({
-    location: 'Chicago', // required
-    search: 'iphone', // required
-    radius: 50,
-    limit: 100,
-    price_min: 100,
-    price_max: 1000
-    }).then(function success(response){
+```ts
+// Searching
 
-        /*
-        Output
-            [
-                {
-                    id: 469543577,
-                    category: { 
-                        id: 20, 
-                        name: 'Cell Phones' 
-                    },
-                    location_name: 'Chicago, IL',
-                    title: 'Cracked iPhone 7 32 GB unlocked for any company',
-                    post_date_ago: '1 minute',
-                    get_full_url: 'https://offerup.com/item/detail/469543577/',
-                    priority: 100,
-                    state: 3,
-                    longitude: -87.7754,
-                    latitude: 41.9211,
-                    sort_label: 'Items near Chicago',
-                    description: 'Unlocked for any company. Cracked screen everything works perfectly. Drop off is a extra $15 '
-                },
-                ...
-            ]
-        */
+(async() => {
+    const OfferUp = require('offerup');
 
-    }, function error(response){
-        console.log(response);
+    const offerUp = OfferUp();
+
+    let response = await offerUp.search({
+        q: 'iphone',
+        lon: 42.12,
+        lat: -87.22,
+        lid: 37,
+        zipcode: 60663,
+        limit: 50,
+        accuracy: 100,
+        sort: 'distance',
+        price_min: 250,
+        price_max: 300,
+        delivery_param: 'p'
     });
+})();
 ```
 
-* See the [full getFullListByQuery() docs](docs/getFullListByQuery.md) for the list of all possible modules and the data they return.
+## Public Methods
+**Authorization isn't required**
 
-## Methods
+### authorize('email', 'password') 
 
-### setGoogleMapApi('api_key') 
-> Canceled since v.1.1.0
+Authorize in order to use personal methods
 
-```js
-// offerup.setGoogleMapApi('Your_Api_Key');
+- [Request and response examples are here](docs/authorize.md)
+
+```ts
+(async() => {
+    const OfferUp = require('offerup');
+
+    const offerUp = OfferUp();
+
+    let response = await offerUp.authorize('email', 'password');
+})();
 ```
 
-### setDefaults()
+### getItem(itemid) 
 
-This data will be used if the query parameter is empty
+Get item information
 
-```js
-offerup.setDefaults({
-    location: 'New York',
-    radius: 30,
-    limit: 1000,
-    price_min: 100,
-    price_max: 1000
-});
+- [Request and response examples are here](docs/getItem.md)
+
+```ts
+(async() => {
+    const OfferUp = require('offerup');
+
+    const offerUp = OfferUp();
+
+    let response = await offerUp.getItem(589211682);
+})();
 ```
 
-### getUserProfile('user_id')
+### getLists() 
 
-Allows you to get user information by user ID
+Get all lists
 
-```js
-offerup.getUserProfile('112390').then(function(response){
-    if(response && response.success == 'success'){
-        console.log(response.data);
-        /*
-        Output
-            { 
-                success: 'success',
-                data: { 
-                        type: 'SELLER',
-                        name: 'calvin',
-                        member_since: 'March, 2014',
-                        reviews: '1',
-                        location: 'VANCOUVER, WA',
-                        followers: '8',
-                        items: [
-                            { 
-                                id: '392556488',
-                                title: 'Shirt',
-                                img_src: 'https://d2j6tswx2otu6e.cloudfront.net/0qdf73oL5yfun8RBLcnUyoj2upY=/200x267/d2c0/d2c0a133a6194e9da25266a8165c4e2a.jpg',
-                                price: '5.00',
-                                location: 'Elizabethton, TN',
-                                link: 'https://offerup.com/item/detail/392556488/' 
-                            }
-                        ] 
-                    } 
-                }
-            */
-    }
-}, function error(response){
-    console.log(response);
-});
+- [Request and response examples are here](docs/getLists.md)
+
+```ts
+(async() => {
+    const OfferUp = require('offerup');
+
+    const offerUp = OfferUp();
+
+    let response = await offerUp.getLists();
+})();
 ```
 
-### getItemInformation('item_id')
+### getCategories() 
 
-Allows you to get item information by item ID
+Get all categories
 
-```js
-offerup.getItemInformation('393936205').then(function success(response){
-    if(response && response.success == 'success'){
-        console.log(response.data);
-        /*
-            Output
-            {
-                success: "success",
-                data: { 
-                    title: 'Data Recovery Services',
-                    location: 'Decatur, GA',
-                    posted_ago: 'Posted 3 hours ago',
-                    description: 'Great condition hardly used has all pieces.',
-                    condition: 'New (never used)',
-                    price: '20',
-                    owner: { 
-                        id: '34629542', 
-                        name: 'ProTech4O42876497' 
-                    }
-                }
-            }
-        */
-    }
-}, function error(response){
-    console.log(response);
-});
+- [Request and response examples are here](docs/getCategories.md)
+
+```ts
+(async() => {
+    const OfferUp = require('offerup');
+
+    const offerUp = OfferUp();
+
+    let response = await offerUp.getCategories();
+})();
+
+```
+
+### getUser(userid) 
+
+Get user information
+
+- [Request and response examples are here](docs/getUser.md)
+
+```ts
+(async() => {
+    const OfferUp = require('offerup');
+
+    const offerUp = OfferUp();
+
+    let response = await offerUp.getUser(49580761);
+})();
+```
+
+## Private Methods
+**Authorization required**
+
+### getMyProfile() 
+
+Get current profile's personal information
+
+- [Request and response examples are here](docs/getMyProfile.md)
+
+```ts
+(async() => {
+    const OfferUp = require('offerup');
+
+    const offerUp = OfferUp();
+
+    // Authorization
+    await offerUp.authorize('email', 'password');
+
+    let response = await offerUp.getMyProfile();
+})();
+```
+
+### offerPrice(itemid, price) 
+
+Creates new price offer for the <mark>itemid</mark> with price <mark>price</mark>
+
+- [Request and response examples are here](docs/offerPrice.md)
+
+
+```ts
+(async() => {
+    const OfferUp = require('offerup');
+
+    const offerUp = OfferUp();
+
+    // Authorization
+    await offerUp.authorize('email', 'password');
+
+    let response = await offerUp.offerPrice(591216884, 200);
+})();
+```
+
+### getAccountPayment() 
+
+- [Request and response examples are here](docs/getAccountPayment.md)
+
+```ts
+(async() => {
+    const OfferUp = require('offerup');
+
+    const offerUp = OfferUp();
+
+    // Authorization
+    await offerUp.authorize('email', 'password');
+
+    let response = await offerUp.getAccountPayment();
+})();
+```
+
+### getAccountPaymentHistory() 
+
+Get current profile's payment history information
+
+- [Request and response examples are here](docs/getAccountPaymentHistory.md)
+
+```ts
+(async() => {
+    const OfferUp = require('offerup');
+
+    const offerUp = OfferUp();
+
+    // Authorization
+    await offerUp.authorize('email', 'password');
+
+    let response = await offerUp.getAccountPaymentHistory();
+})();
+```
+
+### getBoardsList() 
+
+Get all saved boards
+
+- [Request and response examples are here](docs/getBoardsList.md)
+
+```ts
+(async() => {
+    const OfferUp = require('offerup');
+
+    const offerUp = OfferUp();
+
+    // Authorization
+    await offerUp.authorize('email', 'password');
+
+    let response = await offerUp.getBoardsList();
+})();
+```
+
+### getUserRelation(userid) 
+
+Get relationship information between current account and <mark>userid</mark>
+
+- [Request and response examples are here](docs/getUserRelation.md)
+
+```ts
+(async() => {
+    const OfferUp = require('offerup');
+
+    const offerUp = OfferUp();
+
+    // Authorization
+    await offerUp.authorize('email', 'password');
+
+    let response = await offerUp.getUserRelation(49580723);
+})();
 ```

@@ -1,4 +1,4 @@
-# getUserRelation
+# getUserRelation()
 
 **Fields**: 
 - <mark>userid: number = 49580723</mark> - User ID
