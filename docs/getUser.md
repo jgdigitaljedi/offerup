@@ -1,9 +1,13 @@
 # getUser()
 
 **Fields**:
-- <mark>userid: number = 49580761</mark> - User ID
+```ts
+userid: number = 49580761 // User ID
+```
 
-**Authentication**: <mark>No</mark>
+
+**Authentication**: _No_
+
 
 **Request**:
 
@@ -16,6 +20,7 @@
     let response = await offerUp.getUser(49580761);
 })();
 ```
+
 
 **Response**:
 

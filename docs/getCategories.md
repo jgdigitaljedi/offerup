@@ -1,8 +1,11 @@
 # getCategories()
 
-**Fields**: <mark>No</mark>
 
-**Authentication**: <mark>No</mark>
+**Fields**: _No_
+
+
+**Authentication**: _No_
+
 
 **Request**:
 
@@ -15,6 +18,7 @@
     let response = await offerUp.getCategories();
 })();
 ```
+
 
 **Response**:
 

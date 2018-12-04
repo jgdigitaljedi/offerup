@@ -1,9 +1,12 @@
 # offerPrice()
 
 **Fields**:
-- <mark>email: string = aga36595@iencm.com</mark> - Your email
-- <mark>password: string = 123456</mark> - Your password
-- <mark>options: {useDefault: boolean} = {useDefault: false}</mark> - Set to <mark>true<mark> if you want to save your token in .offerup file (in __dirname folder)
+```ts
+email: string = 'aga36595@iencm.com' // Your email
+password: string = 123456 // Your password
+options: {useDefault: boolean} = {useDefault: true} // Set to TRUE if you want to save your token in .offerup file (in __dirname folder)
+
+```
 
 #### OfferUp has CloudFlare Firewall. CloudFlare will block you after 20-30 login requests (doesn't matter the result successed or failed). That's why it's easier to login once and use that token forever (1 year)
 
@@ -11,7 +14,9 @@
 
 > OfferUp session expiration time - 1 year. Have fun.
 
-**Authentication**: <mark>No</mark>
+
+**Authentication**: _No_
+
 
 **Request**:
 
@@ -26,6 +31,7 @@
     });
 })();
 ```
+
 
 **Response**:
 

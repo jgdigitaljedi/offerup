@@ -1,9 +1,13 @@
 # getUserRelation()
 
 **Fields**: 
-- <mark>userid: number = 49580723</mark> - User ID
+```ts
+userid: number = 49580723 // User ID
+```
 
-**Authentication**: <mark>Required</mark>
+
+**Authentication**: _Required_
+
 
 **Request**:
 
@@ -19,6 +23,7 @@
     let response = await offerUp.getUserRelation(49580723);
 })();
 ```
+
 
 **Response**:
 

@@ -1,8 +1,11 @@
 # getAccountPayment()
 
-**Fields**: <mark>No</mark>
 
-**Authentication**: <mark>Required</mark>
+**Fields**: _No_
+
+
+**Authentication**: _Required_
+
 
 **Request**:
 
@@ -18,6 +21,7 @@
     let response = await offerUp.getAccountPayment();
 })();
 ```
+
 
 **Response**:
 

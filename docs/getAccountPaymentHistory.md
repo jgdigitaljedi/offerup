@@ -1,10 +1,13 @@
 # getAccountPaymentHistory()
 
-> If you have an example of how <mark>history</mark> property looks like, feel free to share.
+> If you have an example of how _history_ property looks like, feel free to share.
 
-**Fields**: <mark>No</mark>
 
-**Authentication**: <mark>Required</mark>
+**Fields**: _No_
+
+
+**Authentication**: _Required_
+
 
 **Request**:
 
@@ -20,6 +23,7 @@
     let response = await offerUp.getAccountPaymentHistory();
 })();
 ```
+
 
 **Response**:
 
