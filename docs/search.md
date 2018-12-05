@@ -1,26 +1,30 @@
 # search()
 
+
 **Fields**:
-- <mark>lon: number = 42.12</mark> - Longitude
-- <mark>lat: number = -87.22</mark> - Latitude
-- <mark>lid: number = 37</mark> - List ID ([More here](getLists.md))
-- <mark>zipcode: number = 60663</mark> - Zip Code
-- <mark>limit: number = 50</mark> - Max items requested
-- <mark>accuracy: number = 100</mark> - Item's accuracy (0-100)
-- <mark>sort: 'distance' | 'price' | '-price' = price</mark> - Sort By field (accepts only 'distance', 'price' and '-price')
-- <mark>price_min: number = 250</mark> - Minimum price for the item
-- <mark>price_max: number = 300</mark> - Maximum price for the item
-- <mark>delivery_param: 'p' | 's' = p</mark> - Delivery type (s -> 'Shipping', p -> 'Pick up')
+```ts
+lon: number = -87.22 // Longitude
+lat: number = 42.12 // Latitude
+lid: number = 37 // List ID
+zipcode: number = 60663 // Zip Code
+limit: number = 50 // Max items requested
+accuracy: number = 100 // Item's accuracy (0-100)
+sort: 'distance' | 'price' | '-price' = 'price' // Sort By field (accepts only 'distance', 'price' and '-price')
+price_min: number = 250 // Minimum price
+price_max: number = 300 // Maximum price
+delivery_param: 'p' | 's' = 'p' // Delivery type (s -> 'Shipping', p -> 'Pick up')
+```
 
 
-**Authentication**: <mark>No</mark>
+**Authentication**: _No_
+
 
 **Request**:
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     let response = await offerUp.search({
@@ -37,6 +41,7 @@
     });
 })();
 ```
+
 
 **Response**:
 

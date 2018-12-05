@@ -1,16 +1,20 @@
 # getUserRelation()
 
 **Fields**: 
-- <mark>userid: number = 49580723</mark> - User ID
+```ts
+userid: number = 49580723 // User ID
+```
 
-**Authentication**: <mark>Required</mark>
+
+**Authentication**: _Required_
+
 
 **Request**:
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     // Authorization
@@ -19,6 +23,7 @@
     let response = await offerUp.getUserRelation(49580723);
 })();
 ```
+
 
 **Response**:
 

@@ -1,20 +1,24 @@
 # getCategories()
 
-**Fields**: <mark>No</mark>
 
-**Authentication**: <mark>No</mark>
+**Fields**: _No_
+
+
+**Authentication**: _No_
+
 
 **Request**:
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     let response = await offerUp.getCategories();
 })();
 ```
+
 
 **Response**:
 

@@ -1,25 +1,33 @@
 # offerPrice()
 
 **Fields**:
-- <mark>itemid: number = 591216884</mark> - Item ID
-- <mark>price: number = 200</mark> - Your offer
+```ts
+itemid: number = 591216884 // Item ID
+price: number = 200 // Your offer
+```
 
-**Authentication**: <mark>Required</mark>
+
+**Authentication**: _Required_
+
 
 **Request**:
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     // Authorization
+    
     await offerUp.authorize('email', 'password');
+    // or
+    await offerUp.authorizeWithToken('token');
 
     let response = await offerUp.offerPrice(591216884, 200);
 })();
 ```
+
 
 **Response**:
 

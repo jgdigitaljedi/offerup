@@ -1,21 +1,27 @@
 # getItem()
 
-**Fields**:
-- <mark>itemid: number = 589211682</mark> - Item ID
 
-**Authentication**: <mark>No</mark>
+**Fields**:
+```ts
+itemid: number = 589211682 // Item ID
+```
+
+
+**Authentication**: _No_
+
 
 **Request**:
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     let response = await offerUp.getItem(589211682);
 })();
 ```
+
 
 **Response**:
 

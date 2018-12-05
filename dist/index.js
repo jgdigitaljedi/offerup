@@ -4,10 +4,8 @@ var HTTPStatus = require("http-status");
 var cloudscraper = require("cloudscraper");
 var request = require("request");
 var form_urlencoded_1 = require("form-urlencoded");
-var fs = require("fs");
-var path = require("path");
 var _ = require("lodash");
-var OfferUp = /** @class */ (function () {
+module.exports = /** @class */ (function () {
     function OfferUp() {
         this.baseHost = 'https://api.offerupnow.com/api/v2';
         this.timeout = 5000;
@@ -16,7 +14,7 @@ var OfferUp = /** @class */ (function () {
     }
     OfferUp.prototype.checkToken = function () {
         if (!this.token) {
-            throw Error('Token is not defined. Please use OfferUp.authorize() to get token.');
+            throw Error('Token is not defined. Please use OfferUp.authorize() or OfferUp.authorizeWithToken() to get token.');
         }
     };
     /**
@@ -58,39 +56,28 @@ var OfferUp = /** @class */ (function () {
         }
         return this.basePostRequst(this.baseHost + "/item/" + itemid + "/offer/", 'offer=' + price);
     };
-    OfferUp.prototype.authorize = function (username, password, options) {
+    OfferUp.prototype.authorize = function (username, password) {
         var _this = this;
-        if (options === void 0) { options = { useDefault: true }; }
         if (!username || !password) {
             throw Error('Username or password not defined.');
         }
-        if (options.useDefault) {
-            this.offerupConfigPath = path.resolve(__dirname, './../.offerup');
-            var offerupConfig = void 0;
-            if (fs.existsSync(this.offerupConfigPath)) {
-                offerupConfig = fs.readFileSync(this.offerupConfigPath, {
-                    encoding: 'utf8'
-                });
-                var offerupSettings = _.split(offerupConfig, ':');
-                if (offerupSettings.length == 2 && username == offerupSettings[1]) {
-                    this.token = offerupSettings[0];
-                    return this.baseRequest('https://api.offerupnow.com/api/v2/user/me');
-                }
-            }
-        }
         return new Promise(function (resolve, reject) {
             _this.postRequest('https://api.offerupnow.com/api/v2/user/me', { username: username, password: password }).then(function (data) {
-                if (options.useDefault && data.session && data.session.token && _this.offerupConfigPath && !fs.existsSync(_this.offerupConfigPath)) {
-                    fs.writeFileSync(_this.offerupConfigPath, data.session.token + ":" + username, {
-                        encoding: 'utf8'
-                    });
+                if (data.session && data.session.token) {
                     _this.token = data.session.token;
+                    resolve({ token: data.session.token });
                 }
-                resolve(data);
+                else {
+                    reject(new Error('Token is not defined'));
+                }
             }).catch(function (err) {
                 reject(err);
             });
         });
+    };
+    OfferUp.prototype.authorizeWithToken = function (token) {
+        this.token = token;
+        return this.baseRequest('https://api.offerupnow.com/api/v2/user/me');
     };
     /**
      * Search function
@@ -275,4 +262,3 @@ var OfferUp = /** @class */ (function () {
     };
     return OfferUp;
 }());
-exports.default = OfferUp;
