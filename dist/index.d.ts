@@ -1,48 +1,5 @@
 /// <reference types="request" />
 import * as request from 'request';
-export default class OfferUp {
-    baseHost: string;
-    private timeout;
-    private offerupConfigPath;
-    private token;
-    constructor();
-    private checkToken();
-    /**
-     * Account APIs. Token required!
-     */
-    getMyProfile(): Promise<OfferUpUserResult>;
-    getAccountPayment(): Promise<OfferUpAccountPayment>;
-    getAccountPaymentHistory(): Promise<OfferUpAccountPaymentHistory>;
-    getBoardsList(): Promise<OfferUpBoardsList>;
-    getUserRelation(userid: number): Promise<OfferUpUserRelation>;
-    offerPrice(itemid: number, price: number): Promise<OfferUpItemOffer>;
-    authorize(username: string, password: string, options?: any): Promise<OfferUpUserResult>;
-    /**
-     * Search function
-     */
-    search(options: OfferUpSearchOptions): Promise<OfferUpSearchResult>;
-    /**
-     * Gets user by id
-     * @param userid
-     */
-    getUser(userid: number): Promise<OfferUpProfileResult>;
-    /**
-     * Gets all categories
-     */
-    getCategories(): Promise<OfferUpCategoriesResult>;
-    /**
-     * Gets all lists
-     */
-    getLists(): Promise<OfferUpListsResult>;
-    /**
-     * Get item by id
-     * @param itemid
-     */
-    getItem(itemid: number): Promise<OfferUpItemResult>;
-    private postRequest(url, data);
-    private basePostRequst(url, body);
-    private baseRequest(url, requestOptions?);
-}
 export interface OfferUpSearchOptions {
     q: string;
     lid: number;

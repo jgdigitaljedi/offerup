@@ -7,7 +7,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as _ from 'lodash';
 
-export default class OfferUp {
+module.exports =  class OfferUp {
     public baseHost = 'https://api.offerupnow.com/api/v2';
 
     private timeout = 5000;

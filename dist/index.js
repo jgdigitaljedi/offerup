@@ -7,7 +7,7 @@ var form_urlencoded_1 = require("form-urlencoded");
 var fs = require("fs");
 var path = require("path");
 var _ = require("lodash");
-var OfferUp = /** @class */ (function () {
+module.exports = /** @class */ (function () {
     function OfferUp() {
         this.baseHost = 'https://api.offerupnow.com/api/v2';
         this.timeout = 5000;
@@ -275,4 +275,3 @@ var OfferUp = /** @class */ (function () {
     };
     return OfferUp;
 }());
-exports.default = OfferUp;

@@ -29,8 +29,8 @@ npm install offerup --save
 
     let response = await offerUp.search({
         q: 'iphone',
-        lon: 42.12,
-        lat: -87.22,
+        lon: -87.22,
+        lat: 42.12,
         lid: 37,
         zipcode: 60663,
         limit: 50,

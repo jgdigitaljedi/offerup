@@ -3,8 +3,8 @@
 
 **Fields**:
 ```ts
-lon: number = 42.12 // Longitude
-lat: number = -87.22 // Latitude
+lon: number = -87.22 // Longitude
+lat: number = 42.12 // Latitude
 lid: number = 37 // List ID
 zipcode: number = 60663 // Zip Code
 limit: number = 50 // Max items requested
