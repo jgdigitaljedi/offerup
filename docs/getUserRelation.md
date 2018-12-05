@@ -12,9 +12,9 @@ userid: number = 49580723 // User ID
 **Request**:
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     // Authorization

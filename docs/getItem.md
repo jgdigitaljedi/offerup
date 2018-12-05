@@ -13,9 +13,9 @@ itemid: number = 589211682 // Item ID
 **Request**:
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     let response = await offerUp.getItem(589211682);

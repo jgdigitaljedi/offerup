@@ -17,9 +17,9 @@ password: string = 123456 // Your password
 **Request**:
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     let token = await offerUp.authorize('email', 'password');
@@ -42,9 +42,9 @@ password: string = 123456 // Your password
 ## Authorize with Token
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     let token = await offerUp.authorizeWithToken('my_saved_token');

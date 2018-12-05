@@ -22,9 +22,9 @@ delivery_param: 'p' | 's' = 'p' // Delivery type (s -> 'Shipping', p -> 'Pick up
 **Request**:
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     let response = await offerUp.search({

@@ -10,13 +10,16 @@
 **Request**:
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     // Authorization
+    
     await offerUp.authorize('email', 'password');
+    // or
+    await offerUp.authorizeWithToken('token');
 
     let response = await offerUp.getAccountPayment();
 })();
