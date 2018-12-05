@@ -22,9 +22,9 @@ npm install offerup --save
 ```ts
 // Searching
 
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     let response = await offerUp.search({
@@ -53,9 +53,9 @@ Authorize in order to use personal methods
 - [Request and response examples are here](docs/authorize.md)
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     let response = await offerUp.authorize('email', 'password');
@@ -69,9 +69,9 @@ Get item information
 - [Request and response examples are here](docs/getItem.md)
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     let response = await offerUp.getItem(589211682);
@@ -85,9 +85,9 @@ Get all lists
 - [Request and response examples are here](docs/getLists.md)
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     let response = await offerUp.getLists();
@@ -101,9 +101,9 @@ Get all categories
 - [Request and response examples are here](docs/getCategories.md)
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     let response = await offerUp.getCategories();
@@ -118,9 +118,9 @@ Get user information
 - [Request and response examples are here](docs/getUser.md)
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     let response = await offerUp.getUser(49580761);
@@ -137,13 +137,16 @@ Get current profile's personal information
 - [Request and response examples are here](docs/getMyProfile.md)
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     // Authorization
+    
     await offerUp.authorize('email', 'password');
+    // or
+    await offerUp.authorizeWithToken('token');
 
     let response = await offerUp.getMyProfile();
 })();
@@ -157,13 +160,16 @@ Creates new price offer for the <mark>itemid</mark> with price <mark>price</mark
 
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     // Authorization
+    
     await offerUp.authorize('email', 'password');
+    // or
+    await offerUp.authorizeWithToken('token');
 
     let response = await offerUp.offerPrice(591216884, 200);
 })();
@@ -174,13 +180,16 @@ Creates new price offer for the <mark>itemid</mark> with price <mark>price</mark
 - [Request and response examples are here](docs/getAccountPayment.md)
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     // Authorization
+    
     await offerUp.authorize('email', 'password');
+    // or
+    await offerUp.authorizeWithToken('token');
 
     let response = await offerUp.getAccountPayment();
 })();
@@ -193,13 +202,16 @@ Get current profile's payment history information
 - [Request and response examples are here](docs/getAccountPaymentHistory.md)
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     // Authorization
+    
     await offerUp.authorize('email', 'password');
+    // or
+    await offerUp.authorizeWithToken('token');
 
     let response = await offerUp.getAccountPaymentHistory();
 })();
@@ -212,13 +224,16 @@ Get all saved boards
 - [Request and response examples are here](docs/getBoardsList.md)
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     // Authorization
+    
     await offerUp.authorize('email', 'password');
+    // or
+    await offerUp.authorizeWithToken('token');
 
     let response = await offerUp.getBoardsList();
 })();
@@ -231,13 +246,16 @@ Get relationship information between current account and <mark>userid</mark>
 - [Request and response examples are here](docs/getUserRelation.md)
 
 ```ts
-(async() => {
-    const OfferUp = require('offerup');
+const OfferUp = require('offerup');
 
+(async() => {
     const offerUp = OfferUp();
 
     // Authorization
+    
     await offerUp.authorize('email', 'password');
+    // or
+    await offerUp.authorizeWithToken('token');
 
     let response = await offerUp.getUserRelation(49580723);
 })();
