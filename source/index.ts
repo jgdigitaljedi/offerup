@@ -20,7 +20,7 @@ module.exports =  class OfferUp {
 
     private checkToken(): void {
         if(!this.token){
-            throw Error('Token is not defined. Please use OfferUp.authorize() to get token.');
+            throw Error('Token is not defined. Please use OfferUp.authorize() or OfferUp.authorizeWithToken() to get token.');
         }
     }
 
@@ -79,43 +79,28 @@ module.exports =  class OfferUp {
         return this.basePostRequst(`${this.baseHost}/item/${itemid}/offer/`, 'offer=' + price);
     }
 
-    public authorize(username: string, password: string, options: any = {useDefault: true}): Promise<OfferUpUserResult> {
+    public authorize(username: string, password: string): Promise<{token: string}> {
         if(!username || !password){
             throw Error('Username or password not defined.');
         }
 
-        if(options.useDefault){
-            this.offerupConfigPath = path.resolve(__dirname, './../.offerup');
-
-            let offerupConfig;
-
-            if(fs.existsSync(this.offerupConfigPath)){
-                offerupConfig = fs.readFileSync(this.offerupConfigPath, {
-                    encoding: 'utf8'
-                });
-
-                let offerupSettings = _.split(offerupConfig, ':');
-
-                if(offerupSettings.length == 2 && username == offerupSettings[1]){
-                    this.token = offerupSettings[0];
-                    return this.baseRequest('https://api.offerupnow.com/api/v2/user/me');
-                }
-            }
-        }
-
         return new Promise((resolve, reject) => {
             this.postRequest('https://api.offerupnow.com/api/v2/user/me', {username: username, password: password}).then((data: any) => {
-                if(options.useDefault && data.session && data.session.token && this.offerupConfigPath && !fs.existsSync(this.offerupConfigPath)){
-                    fs.writeFileSync(this.offerupConfigPath, `${data.session.token}:${username}`, {
-                        encoding: 'utf8'
-                    });
+                if(data.session && data.session.token){
                     this.token = data.session.token;
+                    resolve({token: data.session.token});
+                }else{
+                    reject(new Error('Token is not defined'));
                 }
-                resolve(data);
             }).catch((err: any) => {
                 reject(err);
             }) 
         })
+    }
+
+    public authorizeWithToken(token: string): Promise<OfferUpUserResult> {
+        this.token = token;
+        return this.baseRequest('https://api.offerupnow.com/api/v2/user/me');
     }
 
     /**

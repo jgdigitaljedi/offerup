@@ -1,19 +1,15 @@
-# offerPrice()
+# authorize()
 
 **Fields**:
 ```ts
 email: string = 'aga36595@iencm.com' // Your email
 password: string = 123456 // Your password
-options: {useDefault: boolean} = {useDefault: true} // Set to TRUE if you want to save your token in .offerup file (in __dirname folder)
-
 ```
 
-#### OfferUp has CloudFlare Firewall. CloudFlare will block you after 20-30 login requests (doesn't matter the result successed or failed). That's why it's easier to login once and use that token forever (1 year)
-
-> Even if you save token locally, you still have to provide email and password.
+### OfferUp has CloudFlare Firewall. CloudFlare will block you after 20-30 login requests (doesn't matter the result successed or failed). That's why it's easier to login once and use that token forever (1 year)
+### To authorize with token use _authorizeWithToken()_ (see example below)
 
 > OfferUp session expiration time - 1 year. Have fun.
-
 
 **Authentication**: _No_
 
@@ -26,9 +22,34 @@ options: {useDefault: boolean} = {useDefault: true} // Set to TRUE if you want t
 
     const offerUp = OfferUp();
 
-    let response = await offerUp.authorize('email', 'password', {
-        useDefault: false // true by default
-    });
+    let token = await offerUp.authorize('email', 'password');
+
+    // save token somewhere
+
+    let result = await offerUp.getMyProfile(); // works because you're authorized
+})();
+```
+
+**Response**:
+
+```ts
+{
+    token: '0p28emurpzosytup14glj8b137dcvp62'
+}
+```
+
+
+## Authorize with Token
+
+```ts
+(async() => {
+    const OfferUp = require('offerup');
+
+    const offerUp = OfferUp();
+
+    let token = await offerUp.authorizeWithToken('my_saved_token');
+
+    let result = await offerUp.getMyProfile(); // works because you're authorized
 })();
 ```
 
